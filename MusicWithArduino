@@ -1,14 +1,4 @@
-/*
-Esplora Music
- 
-Press SWITCH 1 and slide the slider at the same time
- 
-Created on 22 november 2012
-By Enrico Gueli, enrico.gueli@gmail.com
-modified 22 Dec 2012
-by Tom Igoe
-*/
- 
+
 #include <Esplora.h>
  
 // these are the frequencies for the notes from middle C
@@ -36,19 +26,34 @@ void setup()
  
 void loop()
 {
-// read the button labeled SWITCH_DOWN. If it's low,
-// then play a note:
-if (Esplora.readButton(SWITCH_DOWN) == LOW) {
-int slider = Esplora.readSlider();
- 
-// use map() to map the slider's range to the
-// range of notes you have:
-byte thisNote = map(slider, 0, 1023, 0, 13);
-// play the note corresponding to the slider's position:
-Esplora.tone(note[thisNote]);
+if (Esplora.readButton(SWITCH_UP) == LOW){
+  Esplora.tone(277, 0.0);
+  delay(10);
+}
+// read the button labeled JOYSTICK_UP. If it's low,
+// then play a C note:
+if (Esplora.readButton(SWITCH_DOWN) == LOW){
+  Esplora.tone(392, 0.0);
+  delay(100);
+}
+// read the button labeled JOYSTICK_DOWN. If it's low,
+// then play a G note:
+if (Esplora.readButton(SWITCH_LEFT) == LOW){
+  Esplora.tone(330, 0.0);
+  delay(100);
+}
+// read the button labeled JOYSTICK_LEFT. If it's low,
+// then play an E note:
+if (Esplora.readButton(SWITCH_RIGHT) == LOW){
+  Esplora.tone(294, 0.0);
+  delay(100);
+  // read the button labeled JOYSTICK_DOWN. If it's low,
+// then play a D note:
 }
 else {
 // if the button isn't pressed, turn the note off:
 Esplora.noTone();
 }
+// read the button labeled JOYSTICK_RIGHT. If it's low,
+// then play a D note:
 }
